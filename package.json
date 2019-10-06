@@ -37,7 +37,7 @@
     "get-port": "5.0.0",
     "jasmine": "3.4.0",
     "mysql": "2.17.1",
-    "node-wifi": "2.0.5",
+    "node-wifi": "^2.0.12",
     "socket.io": "2.2.0",
     "underscore": "1.9.1"
   },
