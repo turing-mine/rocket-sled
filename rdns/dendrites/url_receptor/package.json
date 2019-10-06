@@ -1,0 +1,15 @@
+{
+  "name": "url_receptor",
+  "version": "1.0.0",
+  "description": "dendritic spine for url request signals",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "url",
+    "receptor"
+  ],
+  "author": "Paul Zabin",
+  "license": "MIT"
+}

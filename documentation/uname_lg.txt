@@ -1,0 +1,2 @@
+Linux localhost 3.10.84-g2d76c81-00004-g509e2f1 #1 SMP PREEMPT Thu May 25 11:00:52 CST 2017 aarch64 Android
+

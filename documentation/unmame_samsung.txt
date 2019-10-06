@@ -1,0 +1,2 @@
+Linux localhost 4.4.13-13905785 #1 SMP PREEMPT Tue Jul 3 08:56:29 KST 2018 armv8l Android
+

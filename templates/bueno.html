@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+
+        <title>Hello World</title>
+
+        <link rel="icon" href="/assets/tintabella.ico" type="image/x-icon" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/themes/iot.css" />
+
+        <script src="/js/jquery/jquery-3.3.1.min.js"></script>
+        <script>
+            'use strict';
+
+            $(document).ready(function(){
+                var imgSize = {{img_size}};
+
+                const againButton = document.querySelector('[data-metaphor="again"]');
+
+                function envScript(){
+                    return new Promise(resolve => {
+                        $.getScript("/js/env.js",
+                            function( data, textStatus, jqxhr ) {
+                                switch(parsedUrl.hostname){
+                                    case "localhost":
+                                        parsedGreeting = "Image Uploaded";
+                                        parsedTitle = "Image Uploaded";
+                                        break;
+                                    default:
+                                        parsedGreeting = "Image Uploaded";
+                                        parsedTitle = "Image Uploaded";
+                                        break;
+                                }
+                                document.title = parsedTitle;
+                                $('[data-metaphor="again"]').on('click',addPhoto);
+                                $('[data-metaphor="fullscreen"],[data-metaphor="photons"]').on("click",fullScreen);
+                                resolve('env script resolved.');
+                            }
+                        );
+                    });
+                }
+            
+                function bootStrapScript(){
+                    return new Promise(resolve => {
+                        $.getScript("/js/bootstrap/bootstrap.bundle.min.js",
+                            function( data, textStatus, jqxhr ) {
+                                resolve('bootstrap script resolved.');
+                            }
+                        );
+                    });
+                }
+ 
+                function numberFormatScript(){
+                    return new Promise(resolve => {
+                        $.getScript("//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js",
+                            function(data, textStatus, jqxhr){
+                                var fmtImgSize = numeral(imgSize).format('0.0 b');
+                                $("#upload_size").text(fmtImgSize);
+                                resolve('numeral script resolved.');
+                            }
+                        );
+                    });
+                }
+
+                function imgProcessScript(){
+                    return new Promise(resolve => {
+                        $.getScript("/js/blueimp/load-image.all.min.js",
+                            function(data, textStatus, jqxhr){
+                                var imageUrl = $('#imgOut')[0].src;
+                                loadImage(
+                                    imageUrl,
+                                    function (img, data) {
+                                        if(img.type === "error") {
+                                            console.error("Error loading image " + imageUrl);
+                                        }
+                                        else {
+                                            //var imgOrientation = data.exif.get('Orientation');
+                                            var imgExifData = data.exif;
+                                            showLocation(imgExifData);
+                                            imgMatrix(imgExifData);
+                                        }
+                                    },
+                                    {meta: true}
+                                );                            
+                                resolve('imaging script resolved.');                            
+                            }
+                        );
+                    });
+                }
+ 
+                function showLocation(imgExifData) {
+                    if (typeof imgExifData != 'undefined'){
+                        var imgLocation = imgExifData.getAll();
+                        try {
+                            var imgLatCoord = imgLocation.GPSLatitude.split(',')[0] + '&deg;'
+                                            + imgLocation.GPSLatitude.split(',')[1] + '&apos;'
+                                            + imgLocation.GPSLatitude.split(',')[2] + '&quot';
+                            var imgLatDecimal = (imgLocation.GPSLatitude.split(',')[0] - 0) + (imgLocation.GPSLatitude.split(',')[1] - 0) / 60 + (imgLocation.GPSLatitude.split(',')[2] - 0) / 3600;
+                            var imgLatBearing = imgLocation.GPSLatitudeRef;
+                            var imgLonCoord = imgLocation.GPSLongitude.split(',')[0] + '&deg;'
+                                            + imgLocation.GPSLongitude.split(',')[1] + '&apos;'
+                                            + imgLocation.GPSLongitude.split(',')[2] + '&quot';
+                            var imgLonDecimal = (imgLocation.GPSLongitude.split(',')[0] - 0) + (imgLocation.GPSLongitude.split(',')[1] - 0) / 60 + (imgLocation.GPSLongitude.split(',')[2] - 0) / 3600;
+                            var imgLonBearing = imgLocation.GPSLongitudeRef;
+                            var imgCoordinates = imgLatCoord + imgLatBearing + '&nbsp;' + imgLonCoord + imgLonBearing;
+                            var mapURL = imgLatDecimal + imgLatBearing + '+' + imgLonDecimal + imgLonBearing;
+                            var mapURLq = 'https://maps.google.com/maps/place/' + mapURL;
+                            $('[data-metaphor="coordinates"]').html(imgCoordinates);
+                            $('[data-metaphor="coordinates"]').attr('href',mapURLq);
+                        }
+                        catch {
+                            //console.log('No coordinates or bearings.')    
+                        }
+                    }
+                }
+                                                        
+                (async () => {
+                    const [msg1, msg2, msg3, msg4] = await Promise.all([bootStrapScript(), numberFormatScript(), imgProcessScript(), envScript()]);
+                    //console.log(`async messages: [msg1: ${msg1}] [msg2: ${msg2}] [msg3: ${msg3}] [msg4: ${msg4}]`);
+                })();
+            });
+        </script>
+    </head>
+ 
+    <body>
+        <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+            <a class="navbar-brand" data-metaphor="portal_header"><span data-metaphor="uploadPretext">Uploaded </span><span id="upload_size">{{img_size}}</span><small class="text-muted"><span data-metaphor="camera-status"></span></small></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMetaphor" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMetaphor">
+                <div class="navbar-nav">       
+                    <a class="nav-item nav-link" href="/">home</a>
+                    <a class="nav-item nav-link" href="/photonic">add photo</a>
+                    <a class="nav-item nav-link active">upload status <span class="sr-only">(current)</span></a>
+                    <a data-metaphor="fullscreen" class="nav-item nav-link">fullscreen</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="form-group" data-metaphor="comments-header">
+                <small id="socialHelp" class="form-text text-muted"><label for="social">Comments for {{img_name}}:</label></small>
+            </div>
+            <div class="form-group row" data-metaphor="comments-detail">
+                <div class="col-sm-12">
+                    <input type="text" class="form-control" name="social" id="social" aria-describedby="socialHelp" placeholder="no comments..." value="{{comments}}" readonly>
+                    <button type="button" class="btn btn-secondary btn-md" data-behavior="button" data-metaphor="again">again</button>
+                </div>
+            </div>
+            <div><a href="" data-metaphor="coordinates" target="_blank"></a></div>
+            <div id="preview-section" class="form-group clearfix">
+                <img id="imgOut" class="showImage" src="/uploads/{{img_name}}" data-metaphor="photons" />
+            </div>  
+        </div>
+
+        <div class="container">
+            <!-- ShareThis BEGIN
+            <div class="sharethis-inline-share-buttons"></div>
+            <script async src="//platform-api.sharethis.com/js/sharethis.js#property=5bd85edb2f16d600115dd821&product="inlineshare-buttons""></script>
+            ShareThis END -->
+        </div>
+    </body>
+</html>
+

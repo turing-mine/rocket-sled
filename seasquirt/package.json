@@ -1,0 +1,15 @@
+{
+  "name": "seasquirt",
+  "version": "1.0.0",
+  "description": "brains",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "brains",
+    "sea-creature"
+  ],
+  "author": "Paul Zabin",
+  "license": "MIT"
+}

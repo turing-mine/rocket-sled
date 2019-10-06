@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+
+        <title>Hello World</title>
+
+        <link rel="icon" href="/assets/tintabella.ico" type="image/x-icon" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/themes/iot.css" />
+
+        <script src="/js/jquery/jquery-3.3.1.min.js"></script>
+        <script>
+            'use strict';
+ 
+            $(document).ready(function(){
+                function envScript(){
+                    return new Promise(resolve => {
+                        $.getScript("/js/env.js",
+                            function( data, textStatus, jqxhr ) {
+                                switch(parsedUrl.hostname){
+                                    case "localhost":
+                                        parsedGreeting = "RocketSled";
+                                        parsedTitle = "RocketSled";
+                                        break;
+                                    default:
+                                        parsedGreeting = "RocketSled";
+                                        parsedTitle = "RocketSled";
+                                        break;
+                                }
+                                document.querySelector('[data-metaphor="portal_header"]').innerHTML = parsedGreeting;
+                                document.title = parsedTitle;
+                                $('[data-metaphor="add-photo"]').on('click',addPhoto);
+                                $('[data-metaphor="pier"]').on("click",fullScreen);
+                                resolve('env script resolved.');
+                            }
+                        );
+                    });
+                }
+
+                function bootStrapScript(){
+                    return new Promise(resolve => {
+                        $.getScript("/js/bootstrap/bootstrap.bundle.min.js",
+                            function( data, textStatus, jqxhr ) {
+                                if (location.hostname == '{{ip_addr}}' || location.hostname == 'rocket-sled.herokuapp.com'){
+                                    $('[data-metaphor="otherplace"]').html($('[data-host_ip="{{ip_addr}}"]').text());
+                                }
+                                resolve('bootstrap script resolved.');
+                            }
+                        );
+                    });
+                }
+
+                function imgProcessScript(){
+                    return new Promise(resolve => {
+                        $.getScript("/js/blueimp/load-image.all.min.js",
+                            function(data, textStatus, jqxhr){
+                                var imageUrl = $('#imgOut')[0].src;
+                                loadImage(
+                                    imageUrl,
+                                    function (img, data) {
+                                        if(img.type === "error") {
+                                            //console.error("Error loading image " + imageUrl);
+                                        }
+                                        else {
+                                            //var imgOrientation = data.exif.get('Orientation');
+                                            var imgExifData = data.exif;
+                                            var imgLocation = imgExifData.getAll();
+                                            var imgLatCoord = imgLocation.GPSLatitude.split(',')[0] + '&deg;'
+                                                            + imgLocation.GPSLatitude.split(',')[1] + '&apos;'
+                                                            + imgLocation.GPSLatitude.split(',')[2] + '&quot';
+                                            var imgLatDecimal = (imgLocation.GPSLatitude.split(',')[0] - 0) + (imgLocation.GPSLatitude.split(',')[1] - 0) / 60 + (imgLocation.GPSLatitude.split(',')[2] - 0) / 3600;
+                                            var imgLatBearing = imgLocation.GPSLatitudeRef;
+                                            var imgLonCoord = imgLocation.GPSLongitude.split(',')[0] + '&deg;'
+                                                            + imgLocation.GPSLongitude.split(',')[1] + '&apos;'
+                                                            + imgLocation.GPSLongitude.split(',')[2] + '&quot';
+                                            var imgLonDecimal = (imgLocation.GPSLongitude.split(',')[0] - 0) + (imgLocation.GPSLongitude.split(',')[1] - 0) / 60 + (imgLocation.GPSLongitude.split(',')[2] - 0) / 3600;
+                                            var imgLonBearing = imgLocation.GPSLongitudeRef;
+                                            var imgCoordinates = imgLatCoord + imgLatBearing + '&nbsp;' + imgLonCoord + imgLonBearing;
+                                            var mapURL = imgLatDecimal + imgLatBearing + '+' + imgLonDecimal + imgLonBearing;
+                                            var mapURLq = 'https://maps.google.com/maps/place/' + mapURL;
+                                            $('[data-metaphor="location"]').html(imgCoordinates);
+                                            $('[data-metaphor="location"]').attr('href',mapURLq);
+                                            imgMatrix(imgExifData);
+                                        }
+                                    },
+                                    {meta: true}
+                                );                            
+                                resolve('imaging script resolved.');                            
+                            }
+                        );
+                    });
+                }
+
+                (async () => {
+                    const [msg1, msg2, msg3] = await Promise.all([bootStrapScript(), envScript(), imgProcessScript()]);
+                    //console.log(`async messages: [msg1: ${msg1}] [msg2: ${msg2}] [msg3: ${msg3}]`);
+                })();
+            });
+        </script>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+            <a class="navbar-brand" data-metaphor="portal_header">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMetaphor" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMetaphor">
+                <div class="navbar-nav">       
+                    <a class="nav-item nav-link active">home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="/photonic">add photo</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container" data-metaphor="summary">
+            <div data-metaphor="next_place" class="lead text-left"><span class="h5" data-metaphor="otherplace"><a data-host_ip="{{ip_addr}}" href="http://{{ip_addr}}:{{ip_port}}">RocketSled</a></span> allows you to <a href="/photonic">take photos</a> from your laptop or phone and instantly save them to the cloud, also saving local environmental data at the time the photo is taken.<img id="imgOut" class="splashImage" src="/assets/first-night-sm.jpg" data-metaphor="pier" /><br/><br/><a data-metaphor="location" href="" target="_blank"><span>lat</span> and <span>lon</span></a> is the location of where this photo was taken; this location information was retrieved from the photo via this app.&nbsp;&nbsp;This app can also store other info along with the photo, such as magnetic bearing, temperature and atmospheric pressure, depending on your mobile device's capabilities.<br/><br/>Once the photos and environmental data are stored, they can be uploaded to a cloud service, such as Google Photos.&nbsp;&nbsp;This makes it an ideal field tool for first-responders and forestry personnel, allowing them to collect field data just by taking photos.<!-- <br/><br/>RocketSled is based on Node.js, and uses BootStrap for a mobile-first user experience.&nbsp;RocketSled also uses _underscore.js, and a few other modules with a relatively flat dependency tree structure.--><br/><br/><br/></div>
+        </div>
+ 
+        <div class="container fixed-bottom text-center" data-metaphor="footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-metaphor="add-photo">ADD&nbsp;PHOTO</button>
+        </div>
+    </body>
+</html>
+

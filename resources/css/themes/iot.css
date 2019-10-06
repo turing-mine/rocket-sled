@@ -1,0 +1,182 @@
+/* iot.css */
+
+@media (max-width: 576px) {
+    label.col-sm-2.col-form-label{
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    a[data-metaphor='fullscreen'] {
+        visibility: hidden;
+    } 
+}
+
+body {
+    padding-top: 60px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+span[data-host_port='80'] {
+    display: none;
+}
+
+a[data-host_ip='localhost'] {
+    display: none;
+}
+
+input[data-metaphor='submit'][data-filecount='0'] {
+    display: none;
+}
+
+div[data-metaphor="comments-header"] {
+    margin-bottom: 0rem;
+}
+
+div[data-metaphor="comments-detail"] .col-sm-12 {
+    position: relative;
+    padding-right: 74px;
+}
+
+[data-behavior="button"] {
+    position: absolute;
+    right: 15px;
+    top: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+div#files-section .col-sm-12 {
+    position: relative;
+    padding-right: 68px;
+}
+
+div[data-metaphor='comments'][data-filecount='0'] {
+    display: none;
+}
+
+div[data-metaphor="comments"] .col-sm-12 {
+    position: relative;
+    padding-right: 87px;
+}
+
+div[data-metaphor='host'] {
+    margin-bottom: 8px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+img[data-metaphor='photons']:hover {
+    cursor: pointer;
+}
+
+#imgOut {
+    display: none;
+}
+
+#imgOut.showImage {
+    display: block;
+    height: auto;
+    position: absolute;
+    top:0px;
+    left: 0px;
+}
+
+#imgOut.splashImage {
+    display: block;
+}
+
+#imgPre {
+    display: none;
+}
+
+#imgPre.showText {
+    display: block;
+}
+
+#bytesize {
+    position: absolute;
+    top: 5px;
+    left: 8px;
+    background-color: floralwhite;
+    opacity: 0.618;
+    padding-left: 5px;
+    padding-right: 5px;
+    visibility: hidden;
+}
+
+#bytesize.showSize {
+    visibility: visible;
+}
+
+#preview-section {
+    position: relative;
+}
+
+#uploadForm {
+    margin-top: 8px;
+}
+
+[data-metaphor='upload'] {
+    display: none;
+}
+
+[data-metaphor='portal_header']:hover {
+    cursor: pointer;
+}
+
+.navbar {
+    opacity: 0.618;
+}
+
+.navbar:hover {
+    opacity: 0.923;
+}
+
+.nav-item:hover {
+    cursor: pointer;
+}
+
+button:focus {
+    outline: 0px auto;
+}
+
+[data-metaphor="add-photo"]:focus {
+    outline: 0px auto;
+}
+
+[data-metaphor='again'] {
+    margin-bottom: 8px;
+}
+
+.rotate-6,
+.orientation-right-top {
+    transform: rotate(90deg);
+}
+
+.orientation-bottom-right {
+    transform: rotate(180deg);
+}
+
+[data-metaphor="pier"] {
+    max-width: 596px;
+    float: left;
+    margin-right: 18px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+[data-metaphor="pier"]:hover {
+    cursor: pointer;
+}
+
+[data-metaphor="footer"] {
+    margin-bottom: 8px;
+}
+
