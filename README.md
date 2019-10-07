@@ -1,6 +1,8 @@
 # RocketSled
 RocketSled is a testbed for common and popular Node modules, compatible in Android mobile, IoT and MacOS environments.
 
+https://rocket-sled.herokuapp.com/
+
 Use `git clone https://github.com/LeydenWireless/rocket-sled.git` to copy the app config and file structure to a `sites` or other subdirectory, preferably a subdirectory from your OS's user home.  The importance of this, and the obvious absence of an **_NPM_ project** will be clarified in the following narrative.
 
 > Precursor
