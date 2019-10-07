@@ -3,7 +3,7 @@ RocketSled is a testbed for common and popular Node modules, compatible in Andro
 
 https://rocket-sled.herokuapp.com/
 
-Use `git clone https://github.com/LeydenWireless/rocket-sled.git` to copy the app config and file structure to a `sites` or other subdirectory, preferably a subdirectory from your OS's user home.  The importance of this, and the obvious absence of an **_NPM_ project** will be clarified in the following narrative.
+Use `git clone https://github.com/turing-mine/rocket-sled.git` to copy the app config and file structure to a `sites` or other subdirectory, preferably a subdirectory from your OS's user home.  The importance of this, and the obvious absence of an **_NPM_ project** will be clarified in the following narrative.
 
 > Precursor
 
@@ -31,14 +31,14 @@ pkg install node
 
 Then clone the project, if you haven't done so already, and install with NPM. For Android mobile installs, use the production flag:
 ```
-git clone https://github.com/LeydenWireless/rocket-sled
+git clone https://github.com/turing-mine/rocket-sled
 cd rocket-sled
 npm install --production
 ```
 
 For MacOS installs, use a plain vanilla install without flags:
 ```
-git clone https://github.com/LeydenWireless/rocket-sled
+git clone https://github.com/turing-mine/rocket-sled
 cd rocket-sled
 npm install
 ```
