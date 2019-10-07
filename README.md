@@ -53,7 +53,7 @@ localhost/photonic is a test page to upload files.  localhost/upload is the succ
 
 To stop the app, type: `npm stop`
 
-<img src="https://raw.githubusercontent.com/LeydenWireless/rocket-sled/master/assets/Screen%20Shot%202019-05-06%20at%2010.17.14%20PM.png" width="100%" />
+<img src="https://raw.githubusercontent.com/turing-mine/rocket-sled/master/assets/Screen%20Shot%202019-05-06%20at%2010.17.14%20PM.png" width="100%" />
 
 > App Scripts
 
