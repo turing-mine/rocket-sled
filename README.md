@@ -1,5 +1,5 @@
 # RocketSled
-RocketSled is a testbed for common and popular Node modules, compatible in Android mobile, IoT and MacOS environments.
+RocketSled is an IoT templating framework using Express, Node.js and _underscore.
 
 https://rocket-sled.herokuapp.com/
 
