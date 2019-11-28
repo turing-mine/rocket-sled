@@ -92,6 +92,6 @@ Underscore
 
 The dotenv Node module is installed as a static module.  That is, the required module files are part of this GitHub project, installed via git clone and not npm install.  This of course is not standard practice, but rather an experiment to see what's possile in a mobile Node deployment.
 
-Comments are always welcome.  Ping me, Paul Zabin, on LinkedIn.
+Comments are always welcome.  Ping me, Paul Zabin, via LinkedIn or from the email link on my profile page at https://github.com/turing-mine
 
 
