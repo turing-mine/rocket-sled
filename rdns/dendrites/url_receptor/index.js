@@ -91,6 +91,7 @@ exports.xUpload = function(req, res, buenoRoot, appMeta, serverIpAddr, lPort){
             }
 
             function showOriented(){
+                truComment = fields.social[0].toUpperCase() +  fields.social.slice(1); 
                 res.writeHead(200, appMeta);
                 res.write(uploadTemplate({
                     ip_addr: serverIpAddr,
@@ -99,7 +100,7 @@ exports.xUpload = function(req, res, buenoRoot, appMeta, serverIpAddr, lPort){
                     img_size: files.upload.size,
                     img_type: imgType,
                     img_orientation: imgOrientation,
-                    comments: fields.social
+                    comments: truComment
                 }));
                 res.end();
                 //console.log(`Image orientation: ${imgOrientation}`);
