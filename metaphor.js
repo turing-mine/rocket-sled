@@ -1,6 +1,7 @@
-const modPack = require('./package.json');
 
-process.title = modPack.name;
+const modPack = require('./package.json')
 
-require('./app');
+process.title = modPack.name
+
+require('./app')
 

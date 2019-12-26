@@ -91,7 +91,8 @@ exports.xUpload = function(req, res, buenoRoot, appMeta, serverIpAddr, lPort){
             }
 
             function showOriented(){
-                truComment = fields.social[0].toUpperCase() +  fields.social.slice(1); 
+                console.log(fields)
+                truComment = fields.social; 
                 res.writeHead(200, appMeta);
                 res.write(uploadTemplate({
                     ip_addr: serverIpAddr,
