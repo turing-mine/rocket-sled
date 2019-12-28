@@ -12,12 +12,12 @@
 
         <script src="/js/jquery/jquery-3.3.1.min.js"></script>
         <script>
-            'use strict';
+            'use strict'
 
             $(document).ready(function(){
-                var imgSize = {{img_size}};
+                var imgSize = {{img_size}}
 
-                const againButton = document.querySelector('[data-metaphor="again"]');
+                const againButton = document.querySelector('[data-metaphor="again"]')
 
                 function envScript(){
                     return new Promise(resolve => {
@@ -25,90 +25,90 @@
                             function( data, textStatus, jqxhr ) {
                                 switch(parsedUrl.hostname){
                                     case "localhost":
-                                        parsedGreeting = "Image Uploaded";
-                                        parsedTitle = "Image Uploaded";
-                                        break;
+                                        parsedGreeting = "Image Uploaded"
+                                        parsedTitle = "Image Uploaded"
+                                        break
                                     default:
-                                        parsedGreeting = "Image Uploaded";
-                                        parsedTitle = "Image Uploaded";
-                                        break;
+                                        parsedGreeting = "Image Uploaded"
+                                        parsedTitle = "Image Uploaded"
+                                        break
                                 }
-                                document.title = parsedTitle;
-                                $('[data-metaphor="again"]').on('click',addPhoto);
-                                $('[data-metaphor="fullscreen"],[data-metaphor="photons"]').on("click",fullScreen);
-                                resolve('env script resolved.');
+                                document.title = parsedTitle
+                                $('[data-metaphor="again"]').on('click',addPhoto)
+                                $('[data-metaphor="fullscreen"],[data-metaphor="photons"]').on("click",fullScreen)
+                                resolve('env script resolved.')
                             }
-                        );
-                    });
+                        )
+                    })
                 }
             
                 function bootStrapScript(){
                     return new Promise(resolve => {
                         $.getScript("/js/bootstrap/bootstrap.bundle.min.js",
                             function( data, textStatus, jqxhr ) {
-                                resolve('bootstrap script resolved.');
+                                resolve('bootstrap script resolved.')
                             }
-                        );
-                    });
+                        )
+                    })
                 }
  
                 function numberFormatScript(){
                     return new Promise(resolve => {
                         $.getScript("//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js",
                             function(data, textStatus, jqxhr){
-                                var fmtImgSize = numeral(imgSize).format('0.0 b');
-                                $("#upload_size").text(fmtImgSize);
-                                resolve('numeral script resolved.');
+                                var fmtImgSize = numeral(imgSize).format('0.0 b')
+                                $("#upload_size").text(fmtImgSize)
+                                resolve('numeral script resolved.')
                             }
-                        );
-                    });
+                        )
+                    })
                 }
 
                 function imgProcessScript(){
                     return new Promise(resolve => {
                         $.getScript("/js/blueimp/load-image.all.min.js",
                             function(data, textStatus, jqxhr){
-                                var imageUrl = $('#imgOut')[0].src;
+                                var imageUrl = $('#imgOut')[0].src
                                 loadImage(
                                     imageUrl,
                                     function (img, data) {
                                         if(img.type === "error") {
-                                            console.error("Error loading image " + imageUrl);
+                                            console.error("Error loading image " + imageUrl)
                                         }
                                         else {
-                                            //var imgOrientation = data.exif.get('Orientation');
-                                            var imgExifData = data.exif;
-                                            showLocation(imgExifData);
-                                            imgMatrix(imgExifData);
+                                            //var imgOrientation = data.exif.get('Orientation')
+                                            var imgExifData = data.exif
+                                            showLocation(imgExifData)
+                                            imgMatrix(imgExifData)
                                         }
                                     },
                                     {meta: true}
-                                );                            
-                                resolve('imaging script resolved.');                            
+                                )                            
+                                resolve('imaging script resolved.')                        
                             }
-                        );
-                    });
+                        )
+                    })
                 }
  
                 function showLocation(imgExifData) {
                     if (typeof imgExifData != 'undefined'){
-                        var imgLocation = imgExifData.getAll();
+                        var imgLocation = imgExifData.getAll()
                         try {
                             var imgLatCoord = imgLocation.GPSLatitude.split(',')[0] + '&deg;'
                                             + imgLocation.GPSLatitude.split(',')[1] + '&apos;'
-                                            + imgLocation.GPSLatitude.split(',')[2] + '&quot';
-                            var imgLatDecimal = (imgLocation.GPSLatitude.split(',')[0] - 0) + (imgLocation.GPSLatitude.split(',')[1] - 0) / 60 + (imgLocation.GPSLatitude.split(',')[2] - 0) / 3600;
-                            var imgLatBearing = imgLocation.GPSLatitudeRef;
+                                            + imgLocation.GPSLatitude.split(',')[2] + '&quot'
+                            var imgLatDecimal = (imgLocation.GPSLatitude.split(',')[0] - 0) + (imgLocation.GPSLatitude.split(',')[1] - 0) / 60 + (imgLocation.GPSLatitude.split(',')[2] - 0) / 3600
+                            var imgLatBearing = imgLocation.GPSLatitudeRef
                             var imgLonCoord = imgLocation.GPSLongitude.split(',')[0] + '&deg;'
                                             + imgLocation.GPSLongitude.split(',')[1] + '&apos;'
-                                            + imgLocation.GPSLongitude.split(',')[2] + '&quot';
-                            var imgLonDecimal = (imgLocation.GPSLongitude.split(',')[0] - 0) + (imgLocation.GPSLongitude.split(',')[1] - 0) / 60 + (imgLocation.GPSLongitude.split(',')[2] - 0) / 3600;
-                            var imgLonBearing = imgLocation.GPSLongitudeRef;
-                            var imgCoordinates = imgLatCoord + imgLatBearing + '&nbsp;' + imgLonCoord + imgLonBearing;
-                            var mapURL = imgLatDecimal + imgLatBearing + '+' + imgLonDecimal + imgLonBearing;
-                            var mapURLq = 'https://maps.google.com/maps/place/' + mapURL;
-                            $('[data-metaphor="coordinates"]').html(imgCoordinates);
-                            $('[data-metaphor="coordinates"]').attr('href',mapURLq);
+                                            + imgLocation.GPSLongitude.split(',')[2] + '&quot'
+                            var imgLonDecimal = (imgLocation.GPSLongitude.split(',')[0] - 0) + (imgLocation.GPSLongitude.split(',')[1] - 0) / 60 + (imgLocation.GPSLongitude.split(',')[2] - 0) / 3600
+                            var imgLonBearing = imgLocation.GPSLongitudeRef
+                            var imgCoordinates = imgLatCoord + imgLatBearing + '&nbsp;' + imgLonCoord + imgLonBearing
+                            var mapURL = imgLatDecimal + imgLatBearing + '+' + imgLonDecimal + imgLonBearing
+                            var mapURLq = 'https://maps.google.com/maps/place/' + mapURL
+                            $('[data-metaphor="coordinates"]').html(imgCoordinates)
+                            $('[data-metaphor="coordinates"]').attr('href',mapURLq)
                         }
                         catch {
                             //console.log('No coordinates or bearings.')    
@@ -117,10 +117,10 @@
                 }
                                                         
                 (async () => {
-                    const [msg1, msg2, msg3, msg4] = await Promise.all([bootStrapScript(), numberFormatScript(), imgProcessScript(), envScript()]);
-                    //console.log(`async messages: [msg1: ${msg1}] [msg2: ${msg2}] [msg3: ${msg3}] [msg4: ${msg4}]`);
-                })();
-            });
+                    const [msg1, msg2, msg3, msg4] = await Promise.all([bootStrapScript(), numberFormatScript(), imgProcessScript(), envScript()])
+                    //console.log(`async messages: [msg1: ${msg1}] [msg2: ${msg2}] [msg3: ${msg3}] [msg4: ${msg4}]`)
+                })()
+            })
         </script>
     </head>
  

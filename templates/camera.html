@@ -12,14 +12,14 @@
 
         <script src="/js/jquery/jquery-3.3.1.min.js"></script>
         <script>
-            'use strict';
+            'use strict'
  
             $(document).ready(function(){
-                var previewUrl;
-                var imgSize;
+                var previewUrl
+                var imgSize
             
-                const uploadInput = document.querySelector('[data-metaphor="upload"]');
-                const filesTransporter = document.querySelector('[data-metaphor="submit"]');
+                const uploadInput = document.querySelector('[data-metaphor="upload"]')
+                const filesTransporter = document.querySelector('[data-metaphor="submit"]')
 
                 function envScript(){
                     return new Promise(resolve => {
@@ -27,119 +27,119 @@
                             function( data, textStatus, jqxhr ) {
                                 switch(parsedUrl.hostname){
                                     case "localhost":
-                                        parsedGreeting = "Upload Image";
-                                        parsedTitle = "Upload Image";
-                                        break;
+                                        parsedGreeting = "Upload Image"
+                                        parsedTitle = "Upload Image"
+                                        break
                                     default:
-                                        parsedGreeting = "Upload Image";
-                                        parsedTitle = "Upload Image";
-                                        break;
+                                        parsedGreeting = "Upload Image"
+                                        parsedTitle = "Upload Image"
+                                        break
                                 }
-                                document.querySelector('[data-metaphor="portal_header"]').innerHTML = parsedGreeting;
-                                document.title = parsedTitle;
-                                resolve('env script resolved.');
+                                document.querySelector('[data-metaphor="portal_header"]').innerHTML = parsedGreeting
+                                document.title = parsedTitle
+                                resolve('env script resolved.')
                             }
-                        );
-                    });
+                        )
+                    })
                 }
 
                 function numberFormatScript(){
                     return new Promise(resolve => {
                         $.getScript("//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js",
                             function(data, textStatus, jqxhr){
-                                resolve('numeral script resolved.');
+                                resolve('numeral script resolved.')
                             }
-                        );
-                    });
+                        )
+                    })
                 }
 
                 function bootStrapScript(){
                     return new Promise(resolve => {
                         $.getScript("/js/bootstrap/bootstrap.bundle.min.js",
                             function( data, textStatus, jqxhr ) {
-                                resolve('bootstrap script resolved.');
+                                resolve('bootstrap script resolved.')
                             }
-                        );
-                    });
+                        )
+                    })
                 }
 
                 function imgProcessScript(){
                     return new Promise(resolve => {
                         $.getScript("/js/blueimp/load-image.all.min.js",
                             function(data, textStatus, jqxhr){
-                                resolve('img processing script resolved.');
+                                resolve('img processing script resolved.')
                             }
-                        );
-                    });
+                        )
+                    })
                 }
 
                 function showUpload(evt){
                     if (evt.target.files.length > 0){
-                        $("#imgPre").addClass("showText");
+                        $("#imgPre").addClass("showText")
 
                         loadImage(
                             evt.target.files[0],
                                 function (img, data){
                                     if (typeof evt.target.files[0] != 'undefined'){
                                         //need typeof for input file race condtion, when retrieving the "next" photo...
-                                        //console.log(evt.target.files);
-                                        $("#imgOut").replaceWith(img);
-                                        $("#preview-section img").attr("id","imgOut");
-                                        $("#preview-section img").attr("data-metaphor","photons");
-                                        $('[data-metaphor="photons"]').on("click", fullScreen);
-                                        $("#imgOut").removeAttr('height').removeAttr('width');
-                                        $("#imgOut").addClass("showImage");
-                                        $("#imgPre").removeClass("showText");
-                                        imgSize = numeral(evt.target.files[0].size).format('0.0 b');
-                                        $('#photons').val(evt.target.files[0].name);
-                                        $("#bytesize").text(imgSize);
-                                        document.querySelector('[data-metaphor="portal_header"]').innerHTML = 'Upload ' + imgSize + ' Image';
-                                        filesTransporter.dataset.filecount = evt.target.files.length;
-                                        $('[data-metaphor="comments"]')[0].dataset.filecount = evt.target.files.length;
-                                        $('[data-metaphor="add-photo"]').html('retry');
-                                        $('#photons').scrollLeft(1000);
-                                        //console.log(data.exif['37510']);
+                                        //console.log(evt.target.files)
+                                        $("#imgOut").replaceWith(img)
+                                        $("#preview-section img").attr("id","imgOut")
+                                        $("#preview-section img").attr("data-metaphor","photons")
+                                        $('[data-metaphor="photons"]').on("click", fullScreen)
+                                        $("#imgOut").removeAttr('height').removeAttr('width')
+                                        $("#imgOut").addClass("showImage")
+                                        $("#imgPre").removeClass("showText")
+                                        imgSize = numeral(evt.target.files[0].size).format('0.0 b')
+                                        $('#photons').val(evt.target.files[0].name)
+                                        $("#bytesize").text(imgSize)
+                                        document.querySelector('[data-metaphor="portal_header"]').innerHTML = 'Upload ' + imgSize + ' Image'
+                                        filesTransporter.dataset.filecount = evt.target.files.length
+                                        $('[data-metaphor="comments"]')[0].dataset.filecount = evt.target.files.length
+                                        $('[data-metaphor="add-photo"]').html('retry')
+                                        $('#photons').scrollLeft(1000)
+                                        //console.log(data.exif['37510'])
                                     }
                                 },
                                 {meta: true}
-                        );
+                        )
                     }
                     else{
-                        $("#imgOut").attr("src","");
-                        resetUpload();
+                        $("#imgOut").attr("src","")
+                        resetUpload()
                     }
                 }
 
                 function resetUpload(){
-                    $("#bytesize").removeClass("showSize");
-                    $("#imgPre").removeClass("showText");
-                    $("#imgOut").removeClass("showImage");
-                    document.querySelector('[data-metaphor="portal_header"]').innerHTML = 'Upload Image';
-                    filesTransporter.dataset.filecount = 0;
-                    $('[data-metaphor="comments"]')[0].dataset.filecount = 0;
-                    $('#photons').val('');
-                    $('#social').val('');
-                    $('[data-metaphor="add-photo"]').html('add&nbsp;photo');
+                    $("#bytesize").removeClass("showSize")
+                    $("#imgPre").removeClass("showText")
+                    $("#imgOut").removeClass("showImage")
+                    document.querySelector('[data-metaphor="portal_header"]').innerHTML = 'Upload Image'
+                    filesTransporter.dataset.filecount = 0
+                    $('[data-metaphor="comments"]')[0].dataset.filecount = 0
+                    $('#photons').val('')
+                    $('#social').val('')
+                    $('[data-metaphor="add-photo"]').html('add&nbsp;photo')
                 }
 
                 function addPhoto(){
-                    $('[data-metaphor="' + $(this)[0].dataset.metaphor + '"]').blur();
-                    $('[data-metaphor="upload"]').click();
+                    $('[data-metaphor="' + $(this)[0].dataset.metaphor + '"]').blur()
+                    $('[data-metaphor="upload"]').click()
                 }
 
-                uploadInput.addEventListener('change', showUpload);
-                uploadInput.addEventListener('click', resetUpload);
-                $('[data-metaphor="add-photo"]').on('click', addPhoto);
+                uploadInput.addEventListener('change', showUpload)
+                uploadInput.addEventListener('click', resetUpload)
+                $('[data-metaphor="add-photo"]').on('click', addPhoto)
 
                 // In case someone clicks the back button...
-                $("#uploadForm").trigger("reset");
+                $("#uploadForm").trigger("reset")
                 filesTransporter.dataset.filecount = 0;
 
                 (async () => {
-                    const [msg1, msg2, msg3, msg4] = await Promise.all([bootStrapScript(), numberFormatScript(), envScript(), imgProcessScript()]);
-                    //console.log(`async messages: [msg1: ${msg1}] [msg2: {msg2}] [msg3: ${msg3}] [msg4: ${msg4}]`);
-                })();
-            });
+                    const [msg1, msg2, msg3, msg4] = await Promise.all([bootStrapScript(), numberFormatScript(), envScript(), imgProcessScript()])
+                    //console.log(`async messages: [msg1: ${msg1}] [msg2: {msg2}] [msg3: ${msg3}] [msg4: ${msg4}]`)
+                })()
+            })
         </script>
     </head>
     <body>

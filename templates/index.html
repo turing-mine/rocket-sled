@@ -12,7 +12,7 @@
 
         <script src="/js/jquery/jquery-3.3.1.min.js"></script>
         <script>
-            'use strict';
+            'use strict'
  
             $(document).ready(function(){
                 function envScript(){
@@ -21,22 +21,22 @@
                             function( data, textStatus, jqxhr ) {
                                 switch(parsedUrl.hostname){
                                     case "localhost":
-                                        parsedGreeting = "RocketSled";
-                                        parsedTitle = "RocketSled";
-                                        break;
+                                        parsedGreeting = "RocketSled"
+                                        parsedTitle = "RocketSled"
+                                        break
                                     default:
-                                        parsedGreeting = "RocketSled";
-                                        parsedTitle = "RocketSled";
-                                        break;
+                                        parsedGreeting = "RocketSled"
+                                        parsedTitle = "RocketSled"
+                                        break
                                 }
-                                document.querySelector('[data-metaphor="portal_header"]').innerHTML = parsedGreeting;
-                                document.title = parsedTitle;
-                                $('[data-metaphor="add-photo"]').on('click',addPhoto);
-                                $('[data-metaphor="pier"]').on("click",fullScreen);
-                                resolve('env script resolved.');
+                                document.querySelector('[data-metaphor="portal_header"]').innerHTML = parsedGreeting
+                                document.title = parsedTitle
+                                $('[data-metaphor="add-photo"]').on('click',addPhoto)
+                                $('[data-metaphor="pier"]').on("click",fullScreen)
+                                resolve('env script resolved.')
                             }
-                        );
-                    });
+                        )
+                    })
                 }
 
                 function bootStrapScript(){
@@ -44,60 +44,60 @@
                         $.getScript("/js/bootstrap/bootstrap.bundle.min.js",
                             function( data, textStatus, jqxhr ) {
                                 if (location.hostname == '{{ip_addr}}' || location.hostname == 'rocket-sled.herokuapp.com'){
-                                    $('[data-metaphor="otherplace"]').html($('[data-host_ip="{{ip_addr}}"]').text());
+                                    $('[data-metaphor="otherplace"]').html($('[data-host_ip="{{ip_addr}}"]').text())
                                 }
-                                resolve('bootstrap script resolved.');
+                                resolve('bootstrap script resolved.')
                             }
-                        );
-                    });
+                        )
+                    })
                 }
 
                 function imgProcessScript(){
                     return new Promise(resolve => {
                         $.getScript("/js/blueimp/load-image.all.min.js",
                             function(data, textStatus, jqxhr){
-                                var imageUrl = $('#imgOut')[0].src;
+                                var imageUrl = $('#imgOut')[0].src
                                 loadImage(
                                     imageUrl,
                                     function (img, data) {
                                         if(img.type === "error") {
-                                            //console.error("Error loading image " + imageUrl);
+                                            //console.error("Error loading image " + imageUrl)
                                         }
                                         else {
-                                            //var imgOrientation = data.exif.get('Orientation');
-                                            var imgExifData = data.exif;
-                                            var imgLocation = imgExifData.getAll();
+                                            //var imgOrientation = data.exif.get('Orientation')
+                                            var imgExifData = data.exif
+                                            var imgLocation = imgExifData.getAll()
                                             var imgLatCoord = imgLocation.GPSLatitude.split(',')[0] + '&deg;'
                                                             + imgLocation.GPSLatitude.split(',')[1] + '&apos;'
-                                                            + imgLocation.GPSLatitude.split(',')[2] + '&quot';
-                                            var imgLatDecimal = (imgLocation.GPSLatitude.split(',')[0] - 0) + (imgLocation.GPSLatitude.split(',')[1] - 0) / 60 + (imgLocation.GPSLatitude.split(',')[2] - 0) / 3600;
-                                            var imgLatBearing = imgLocation.GPSLatitudeRef;
+                                                            + imgLocation.GPSLatitude.split(',')[2] + '&quot'
+                                            var imgLatDecimal = (imgLocation.GPSLatitude.split(',')[0] - 0) + (imgLocation.GPSLatitude.split(',')[1] - 0) / 60 + (imgLocation.GPSLatitude.split(',')[2] - 0) / 3600
+                                            var imgLatBearing = imgLocation.GPSLatitudeRef
                                             var imgLonCoord = imgLocation.GPSLongitude.split(',')[0] + '&deg;'
                                                             + imgLocation.GPSLongitude.split(',')[1] + '&apos;'
-                                                            + imgLocation.GPSLongitude.split(',')[2] + '&quot';
-                                            var imgLonDecimal = (imgLocation.GPSLongitude.split(',')[0] - 0) + (imgLocation.GPSLongitude.split(',')[1] - 0) / 60 + (imgLocation.GPSLongitude.split(',')[2] - 0) / 3600;
-                                            var imgLonBearing = imgLocation.GPSLongitudeRef;
-                                            var imgCoordinates = imgLatCoord + imgLatBearing + '&nbsp;' + imgLonCoord + imgLonBearing;
-                                            var mapURL = imgLatDecimal + imgLatBearing + '+' + imgLonDecimal + imgLonBearing;
-                                            var mapURLq = 'https://maps.google.com/maps/place/' + mapURL;
-                                            $('[data-metaphor="location"]').html(imgCoordinates);
-                                            $('[data-metaphor="location"]').attr('href',mapURLq);
-                                            imgMatrix(imgExifData);
+                                                            + imgLocation.GPSLongitude.split(',')[2] + '&quot'
+                                            var imgLonDecimal = (imgLocation.GPSLongitude.split(',')[0] - 0) + (imgLocation.GPSLongitude.split(',')[1] - 0) / 60 + (imgLocation.GPSLongitude.split(',')[2] - 0) / 3600
+                                            var imgLonBearing = imgLocation.GPSLongitudeRef
+                                            var imgCoordinates = imgLatCoord + imgLatBearing + '&nbsp;' + imgLonCoord + imgLonBearing
+                                            var mapURL = imgLatDecimal + imgLatBearing + '+' + imgLonDecimal + imgLonBearing
+                                            var mapURLq = 'https://maps.google.com/maps/place/' + mapURL
+                                            $('[data-metaphor="location"]').html(imgCoordinates)
+                                            $('[data-metaphor="location"]').attr('href',mapURLq)
+                                            imgMatrix(imgExifData)
                                         }
                                     },
                                     {meta: true}
-                                );                            
-                                resolve('imaging script resolved.');                            
+                                )                   
+                                resolve('imaging script resolved.')                         
                             }
-                        );
-                    });
+                        )
+                    })
                 }
 
                 (async () => {
-                    const [msg1, msg2, msg3] = await Promise.all([bootStrapScript(), envScript(), imgProcessScript()]);
-                    //console.log(`async messages: [msg1: ${msg1}] [msg2: ${msg2}] [msg3: ${msg3}]`);
-                })();
-            });
+                    const [msg1, msg2, msg3] = await Promise.all([bootStrapScript(), envScript(), imgProcessScript()])
+                    //console.log(`async messages: [msg1: ${msg1}] [msg2: ${msg2}] [msg3: ${msg3}]`)
+                })()
+            })
         </script>
     </head>
 
