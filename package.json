@@ -4,7 +4,7 @@
   "description": "Test-bed for local Node modules in mobile and IoT environments.",
   "main": "index.js",
   "scripts": {
-    "start": "export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node metaphor.js",
+    "start": "export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node -r esm metaphor.js",
     "stop": "export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node grimm_reaper.js",
     "test": "jasmine"
   },
@@ -30,6 +30,7 @@
     "blueimp-load-image": "2.26.0",
     "cli-color": "2.0.0",
     "dotenv": "8.2.0",
+    "esm": "3.2.25",
     "express": "4.17.1",
     "find": "0.3.0",
     "find-process": "1.4.3",
