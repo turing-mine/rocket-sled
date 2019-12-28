@@ -42,7 +42,7 @@
     "underscore": "^1.9.1"
   },
   "devDependencies": {
-    "less": "3.9.0"
+    "less": "^3.10.3"
   },
   "comments": {
     "comment": "original stop script was `pkill rocket-sled`"
