@@ -15,7 +15,7 @@ function stopAppProcess(appProc) {
         resolve('') //no msg text for now...
     })
 }
-  
+
 (async () => {
     const [msg1, msg2] = await Promise.all([stopAppProcess('exiftool'), stopAppProcess(modPack.name)])
     console.log('All app processes have been signaled to terminate.')
