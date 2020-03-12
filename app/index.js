@@ -1,7 +1,7 @@
 
 'use strict'
 
-import express from 'express'
+const express = require('express')
 var resourceApp = express()
 
 require('dotenv').config()

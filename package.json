@@ -1,51 +1,53 @@
+
 {
   "name": "rocket-sled",
   "version": "1.0.3",
   "description": "Test-bed for local Node modules in mobile and IoT environments.",
   "main": "index.js",
   "scripts": {
-    "start": "export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node -r esm metaphor.js",
-    "stop": "export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node grimm_reaper.js",
-    "test": "jasmine"
+      "start": "export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node metaphor.js",
+      "stop": "export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node grimm_reaper.js",
+      "test": "jasmine"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LeydenWireless/rocket-sled.git"
+      "type": "git",
+      "url": "git+https://github.com/LeydenWireless/rocket-sled.git"
   },
   "keywords": [
-    "rocket",
-    "sled",
-    "IoT",
-    "mobile"
+      "rocket",
+      "sled",
+      "IoT",
+      "mobile"
   ],
   "author": "Paul Zabin",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LeydenWireless/rocket-sled/issues"
+      "url": "https://github.com/LeydenWireless/rocket-sled/issues"
   },
   "homepage": "https://github.com/LeydenWireless/rocket-sled#readme",
   "dependencies": {
-    "base64-img": "1.0.4",
-    "bluebird": "3.7.2",
-    "blueimp-load-image": "2.26.0",
-    "cli-color": "2.0.0",
-    "dotenv": "8.2.0",
-    "esm": "3.2.25",
-    "express": "4.17.1",
-    "find": "0.3.0",
-    "find-process": "1.4.3",
-    "formidable": "1.2.1",
-    "get-port": "5.1.0",
-    "jasmine": "3.5.0",
-    "mysql": "2.17.1",
-    "node-wifi": "2.0.12",
-    "socket.io": "2.3.0",
-    "underscore": "1.9.1"
+      "base64-img": "1.0.4",
+      "bluebird": "3.7.2",
+      "blueimp-load-image": "2.26.0",
+      "cli-color": "2.0.0",
+      "dotenv": "8.2.0",
+      "esm": "3.2.25",
+      "express": "4.17.1",
+      "find": "0.3.0",
+      "find-process": "1.4.3",
+      "formidable": "1.2.1",
+      "get-port": "5.1.0",
+      "jasmine": "3.5.0",
+      "mysql": "2.17.1",
+      "node-wifi": "2.0.12",
+      "socket.io": "2.3.0",
+      "underscore": "1.9.1"
   },
   "devDependencies": {
-    "less": "3.10.3"
+      "less": "3.10.3"
   },
   "comments": {
-    "comment": "original stop script was `pkill rocket-sled`"
+      "comment": "original stop script was `pkill rocket-sled`"
   }
 }
+
