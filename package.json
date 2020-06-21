@@ -36,7 +36,6 @@
         "formidable": "^1.2.2",
         "get-port": "^5.1.1",
         "jasmine": "^3.5.0",
-        "node-wifi": "2.0.12",
         "socket.io": "2.3.0",
         "underscore": "1.9.1"
     },
