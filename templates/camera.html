@@ -11,6 +11,8 @@
         <link rel="stylesheet" type="text/css" href="css/themes/iot.css" />
 
         <script src="/js/jquery/jquery-3.3.1.min.js"></script>
+        <script src="/js/numeral/numeral.js"></script>
+
         <script>
             'use strict'
  
@@ -38,16 +40,6 @@
                                 document.querySelector('[data-metaphor="portal_header"]').innerHTML = parsedGreeting
                                 document.title = parsedTitle
                                 resolve('env script resolved.')
-                            }
-                        )
-                    })
-                }
-
-                function numberFormatScript(){
-                    return new Promise(resolve => {
-                        $.getScript("//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js",
-                            function(data, textStatus, jqxhr){
-                                resolve('numeral script resolved.')
                             }
                         )
                     })
@@ -136,8 +128,8 @@
                 filesTransporter.dataset.filecount = 0;
 
                 (async () => {
-                    const [msg1, msg2, msg3, msg4] = await Promise.all([bootStrapScript(), numberFormatScript(), envScript(), imgProcessScript()])
-                    //console.log(`async messages: [msg1: ${msg1}] [msg2: {msg2}] [msg3: ${msg3}] [msg4: ${msg4}]`)
+                    const [msg1, msg2, msg3] = await Promise.all([bootStrapScript(), envScript(), imgProcessScript()])
+                    //console.log(`async messages: [msg1: ${msg1}] [msg2: {msg2}] [msg3: ${msg3}]`)
                 })()
             })
         </script>
