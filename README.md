@@ -84,7 +84,6 @@ Bootstrap
 blubird
 dotenv
 Express
-node-wifi
 Underscore
 ```
 
