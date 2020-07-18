@@ -4,8 +4,10 @@
     "description": "Test-bed for local Node modules in mobile and IoT environments.",
     "main": "index.js",
     "scripts": {
-        "start": "export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node metaphor.js",
-        "stop": "export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node grimm_reaper.js",
+        "start": "node metaphor.js",
+        "stop": "node grimm_reaper.js",
+        "startDev": "export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node metaphor.js",
+        "stopDev": "export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node grimm_reaper.js",
         "test": "jasmine"
     },
     "repository": {
