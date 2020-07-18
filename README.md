@@ -20,7 +20,6 @@ pkg upgrade
 pkg install git
 pkg install nano
 pkg install perl
-pkg install mariadb
 pkg install nodejs-lts
 ```
 
