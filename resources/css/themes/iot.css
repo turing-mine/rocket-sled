@@ -13,6 +13,12 @@
     } 
 }
 
+@media (max-width: 768px) {
+    .splashImage {
+        border-radius: 5px;
+    }
+}
+
 body {
     padding-top: 60px;
 }
