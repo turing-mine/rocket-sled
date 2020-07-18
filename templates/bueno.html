@@ -12,11 +12,13 @@
         <link rel="stylesheet" type="text/css" href="css/themes/iot.css" />
 
         <script src="/js/jquery/jquery-3.3.1.min.js"></script>
+        <script src="/js/numeral/numeral.js"></script>
         <script>
             'use strict'
 
             $(document).ready(function(){
-                var imgSize = {{img_size}}
+                const imgSize = numeral({{img_size}})
+                document.querySelector('#upload_size').innerHTML = imgSize.format('0.0 b')
 
                 const againButton = document.querySelector('[data-metaphor="again"]')
 
@@ -53,18 +55,6 @@
                     })
                 }
  
-                function numberFormatScript(){
-                    return new Promise(resolve => {
-                        $.getScript("//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js",
-                            function(data, textStatus, jqxhr){
-                                var fmtImgSize = numeral(imgSize).format('0.0 b')
-                                $("#upload_size").text(fmtImgSize)
-                                resolve('numeral script resolved.')
-                            }
-                        )
-                    })
-                }
-
                 function imgProcessScript(){
                     return new Promise(resolve => {
                         $.getScript("/js/blueimp/load-image.all.min.js",
@@ -118,8 +108,8 @@
                 }
                                                         
                 (async () => {
-                    const [msg1, msg2, msg3, msg4] = await Promise.all([bootStrapScript(), numberFormatScript(), imgProcessScript(), envScript()])
-                    //console.log(`async messages: [msg1: ${msg1}] [msg2: ${msg2}] [msg3: ${msg3}] [msg4: ${msg4}]`)
+                    const [msg1, msg2, msg3] = await Promise.all([bootStrapScript(), imgProcessScript(), envScript()])
+                    //console.log(`async messages: [msg1: ${msg1}] [msg2: ${msg2}] [msg3: ${msg3}]`)
                 })()
             })
         </script>
@@ -135,8 +125,6 @@
                 <div class="navbar-nav">       
                     <a class="nav-item nav-link" href="/">home</a>
                     <a class="nav-item nav-link" href="/photonic">add photo</a>
-                    <a class="nav-item nav-link active">upload status <span class="sr-only">(current)</span></a>
-                    <a data-metaphor="fullscreen" class="nav-item nav-link">fullscreen</a>
                 </div>
             </div>
         </nav>
@@ -157,12 +145,12 @@
             </div>  
         </div>
 
-        <div class="container">
-            <!-- ShareThis BEGIN
+        <!-- <div class="container">
+            ShareThis BEGIN
             <div class="sharethis-inline-share-buttons"></div>
             <script async src="//platform-api.sharethis.com/js/sharethis.js#property=5bd85edb2f16d600115dd821&product="inlineshare-buttons""></script>
-            ShareThis END -->
-        </div>
+            ShareThis END
+        </div> -->
     </body>
 </html>
 
