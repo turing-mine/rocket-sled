@@ -34,12 +34,11 @@
         "find-process": "1.4.3",
         "formidable": "1.2.2",
         "get-port": "5.1.1",
-        "jasmine": "3.5.0",
         "numeral": "2.0.6",
-        "socket.io": "2.3.0",
         "underscore": "1.10.2"
     },
     "devDependencies": {
+        "jasmine": "3.5.0",
         "less": "3.11.3"
     },
     "comments": {
