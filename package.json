@@ -25,7 +25,6 @@
     },
     "homepage": "https://github.com/LeydenWireless/rocket-sled#readme",
     "dependencies": {
-        "base64-img": "1.0.4",
         "bluebird": "3.7.2",
         "blueimp-load-image": "5.12.0",
         "cli-color": "2.0.0",
