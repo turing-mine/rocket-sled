@@ -26,8 +26,8 @@ function getIpPort(item){
             if (netInf[item][0].family === 'IPv4'){
                 ipADDR = netInf[item][0].address
                 ipFamily = netInf[item][0].family
-                console.log(`${item}[0]`)
-                console.log(netInf[item][0])
+                //console.log(`${item}[0]`)
+                //console.log(netInf[item][0])
             }
         }
         if (ipADDR === 'localhost'){
@@ -35,8 +35,8 @@ function getIpPort(item){
                 if (netInf[item][1].family === 'IPv4'){
                     ipADDR = netInf[item][1].address
                     ipFamily = netInf[item][1].family
-                    console.log(`${item}[1]`)
-                    console.log(netInf[item][1])
+                    //console.log(`${item}[1]`)
+                    //console.log(netInf[item][1])
                 }
             }
         }
