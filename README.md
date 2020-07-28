@@ -50,7 +50,7 @@ To start the app, make sure you run the start script from the `rocket-sled/` dir
 
 Some debugging messages will display, along with the port that the server is listening to.  If the server can't determine the ip address, it will display as localhost:80 or localhost:8080, depending on what other ports are already in use.  Open a new tab in your browser and point it to that.  
 
-localhost/photonic is a test page to upload files.  localhost/upload is the success page.  You can list the uploaded files in the `rocket-sled/uploads` directory.  If you are running the app on a mobile phone, your camera is the default upload source choice, making this an ideal framework for a selfie app.
+localhost/camera is the view to upload files.  localhost/upload is the success page.  You can list the uploaded files in the `rocket-sled/uploads` directory.  If you are running the app on a mobile phone, your camera is the default upload source choice, making this an ideal framework for a selfie app.
 
 To stop the app, type: `npm stop`
 

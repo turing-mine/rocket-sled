@@ -67,7 +67,7 @@ function imgAdjust(){
 }
 
 function addPhoto(){
-    document.location = '/photonic'
+    document.location = '/camera'
 }
 
 function fullScreen(){

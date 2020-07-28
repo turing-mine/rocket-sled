@@ -65,7 +65,7 @@ var resourceServer
     resourceApp.use('/assets', express.static('./assets'))
     resourceApp.use('/uploads', express.static('./uploads'))
     resourceApp.use('/upload', function(req, res, next){xtemplate.xUpload(req, res, uploadRoot, appMeta, serverIpAddr, portAvail)})
-    resourceApp.use('/photonic', function(req, res, next){xtemplate.xForm(req, res, cameraRoot, appMeta, serverIpAddr, portAvail)})
+    resourceApp.use('/camera', function(req, res, next){xtemplate.xForm(req, res, cameraRoot, appMeta, serverIpAddr, portAvail)})
     resourceApp.use('/', function(req, res, next){xtemplate.xRoot(req, res, appRoot, appMeta, serverIpAddr, portAvail)})
     try {
         var portAvail = await getPort({port: portHarbor()})
