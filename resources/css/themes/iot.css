@@ -18,7 +18,7 @@
         border-radius: 9px;
     }
     
-    [data-metaphor="add-photo"] {
+    [data-metaphor="footer"] [data-metaphor="add-photo"] {
         display: none;
     }
 }
