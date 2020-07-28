@@ -51,21 +51,21 @@ const serverIpAddr = ipADDR
 
 var xtemplate = require('../rdns/dendrites/url_receptor')
 
-var appRoot = './templates/index.html'
-var cheeseRoot = './templates/camera.html'
-var buenoRoot = './templates/bueno.html'
+var appRoot = './views/index.html'
+var cameraRoot = './views/camera.html'
+var uploadRoot = './views/upload.html'
 
 var appMeta = {"Content-Type": "text/html"}
 
 var resourceServer
 (async () => {
-    //express helpers
+    //Express helpers
     resourceApp.use('/css', express.static('./resources/css'))
     resourceApp.use('/js', express.static('./resources/js'))
     resourceApp.use('/assets', express.static('./assets'))
     resourceApp.use('/uploads', express.static('./uploads'))
-    resourceApp.use('/upload', function(req, res, next){xtemplate.xUpload(req, res, buenoRoot, appMeta, serverIpAddr, portAvail)})
-    resourceApp.use('/photonic', function(req, res, next){xtemplate.xForm(req, res, cheeseRoot, appMeta, serverIpAddr, portAvail)})
+    resourceApp.use('/upload', function(req, res, next){xtemplate.xUpload(req, res, uploadRoot, appMeta, serverIpAddr, portAvail)})
+    resourceApp.use('/photonic', function(req, res, next){xtemplate.xForm(req, res, cameraRoot, appMeta, serverIpAddr, portAvail)})
     resourceApp.use('/', function(req, res, next){xtemplate.xRoot(req, res, appRoot, appMeta, serverIpAddr, portAvail)})
     try {
         var portAvail = await getPort({port: portHarbor()})
