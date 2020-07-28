@@ -3,11 +3,11 @@ RocketSled is an IoT templating framework using Express, Node.js and _underscore
 
 https://rocket-sled.herokuapp.com/
 
-Use `git clone https://github.com/turing-mine/rocket-sled.git` to copy the app config and file structure to a `sites` or other subdirectory, preferably a subdirectory from your OS's user home.  The importance of this, and the obvious absence of an **_NPM_ project** will be clarified in the following narrative.
+Use `git clone https://github.com/turing-mine/rocket-sled` to copy the app config and file structure to a `sites/` or other subdirectory, preferably a subdirectory from your OS's user home.  The importance of this, and the obvious absence of an **_NPM_ project** will be clarified in the following narrative.
 
 > Precursor
 
-The intent of this project is to use orphaned (no Verizon or ATT, etc...) Android phones in wireless challenged areas, to host Node.js app servers and non-standard microservices.  With a Chrome client on top of this, these devices can help first-responders collect remote environmental data in coastal areas, and relay the data to the cloud once wireless connectivity has been re-established.  Of course this mobile app server would also be beneficial in a meshed agricultural network, or assist health care workers serving populations in remote locations.
+The intent of this project is to use orphaned (Verizon or ATT, etc...) Android phones in wireless challenged areas, to host Node.js app servers and non-standard microservices.  With a Chrome client on top of this, these devices can help first-responders collect remote environmental data in coastal areas, and relay the data to the cloud once wireless connectivity has been re-established.  Of course this mobile app server would also be beneficial in a meshed agricultural network, or assist health care workers serving populations in remote locations.
 
 > Dev Environment 
 
