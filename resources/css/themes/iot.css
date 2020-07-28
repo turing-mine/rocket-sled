@@ -17,6 +17,10 @@
     .splashImage {
         border-radius: 9px;
     }
+    
+    [data-metaphor="add-photo"] {
+        display: none;
+    }
 }
 
 body {
