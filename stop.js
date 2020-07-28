@@ -22,4 +22,3 @@ function stopAppProcess(appProc) {
     console.log('All app processes have been signaled to terminate.')
 })()
 
-

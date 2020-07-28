@@ -5,9 +5,9 @@
     "main": "index.js",
     "scripts": {
         "start": "node metaphor.js",
-        "stop": "node grimm_reaper.js",
+        "stop": "node stop.js",
         "startDev": "export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node metaphor.js",
-        "stopDev": "export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node grimm_reaper.js",
+        "stopDev": "export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node stop.js",
         "test": "jasmine"
     },
     "repository": {
