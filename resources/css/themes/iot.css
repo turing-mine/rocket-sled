@@ -150,6 +150,10 @@ img[data-metaphor='photons']:hover {
     cursor: pointer;
 }
 
+.nav-item.nav-link {
+    text-align: right;
+}
+
 button:focus {
     outline: 0px auto;
 }
