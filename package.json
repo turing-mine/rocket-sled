@@ -4,9 +4,9 @@
     "description": "Test-bed for local Node modules in mobile and IoT environments.",
     "main": "index.js",
     "scripts": {
-        "start": "node metaphor.js",
+        "start": "node start.js",
         "stop": "node stop.js",
-        "startDev": "export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node metaphor.js",
+        "startDev": "export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node start.js",
         "stopDev": "export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node stop.js",
         "test": "jasmine"
     },
