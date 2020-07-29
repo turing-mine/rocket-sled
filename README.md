@@ -58,16 +58,16 @@ To stop the app, type: `npm stop`
 
 > App Scripts
 
-The three NPM scripts the app uses are `start`, `stop` and `test`.  These scripts modify the search path to find and use global modules, and should only be executed in the scope they were intended for.  They are documented in the package.json file, but also here for quick reference:
+The three NPM scripts the app uses are `start`, `stop` and `test`.  They are documented in the package.json file, but also listed here for quick reference:
 
 start:
 ```
-export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node metaphor.js
+node start.js
 ```
 
 stop:
 ```
-export NODE_PATH=$(npm root --quiet):$(npm root --quiet -g) && node grimm_reaper.js
+node stop.js
 ```
 
 test:
