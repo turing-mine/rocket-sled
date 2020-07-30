@@ -49,7 +49,8 @@ do {
 
 const serverIpAddr = ipADDR
 
-var xtemplate = require('../rdns/dendrites/url_receptor')
+//var xtemplate = require('../rdns/dendrites/url_receptor')
+var xtemplate = require('../views')
 
 var appRoot = './templates/index.html'
 var cameraRoot = './templates/camera.html'

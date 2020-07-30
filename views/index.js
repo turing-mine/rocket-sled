@@ -11,7 +11,7 @@ _.templateSettings = {
 
 const modID = module.id
 
-const photocopy = require('../../../photocopy')
+const photocopy = require('../photocopy')
 
 exports.xRoot = function(req, res, appRoot, appMeta, serverIpAddr, lPort){
     fs.readFile(appRoot, 'utf8', function(err, data){
