@@ -1,14 +1,14 @@
 {
-  "name": "seasquirt",
+  "name": "photocopy",
   "version": "1.0.0",
-  "description": "brains",
+  "description": "save an img file",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "brains",
-    "sea-creature"
+    "photo",
+    "copy"
   ],
   "author": "Paul Zabin",
   "license": "MIT"

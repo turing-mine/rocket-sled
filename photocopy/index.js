@@ -1,6 +1,4 @@
 
-// uploads.__dirname (here be sea monsters...)
-
 const uploads = require('../uploads')
 const find = require('find')
 
@@ -10,7 +8,7 @@ const { COPYFILE_EXCL } = require('fs').constants
 const clc = require("cli-color")
 const clrMsg = clc.bgXterm(56)
 
-exports.photocopy = function(retrievalPath, saveName){
+exports.photosave = function(retrievalPath, saveName){
     var shortName = saveName
     saveName = uploads.dirName + saveName
     console.log(uploads.dirName)

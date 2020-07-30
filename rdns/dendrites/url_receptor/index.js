@@ -11,7 +11,7 @@ _.templateSettings = {
 const modID = module.id
 const modPack = require('./package.json')
 
-const seasquirt = require('../../../seasquirt')
+const photocopy = require('../../../photocopy')
 
 exports.xRoot = function(req, res, appRoot, appMeta, serverIpAddr, lPort){
     fs.readFile(appRoot, 'utf8', function(err, data){
@@ -83,7 +83,7 @@ exports.xUpload = function(req, res, buenoRoot, appMeta, serverIpAddr, lPort){
 
             if (files.upload["type"] == 'image/jpeg'){
                 imgType = files.upload.type
-                seasquirt.photocopy(retrievalPath, saveName)
+                photocopy.photosave(retrievalPath, saveName)
             }
             else{
                 imgType = "unknown"
