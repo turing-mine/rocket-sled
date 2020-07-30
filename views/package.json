@@ -1,0 +1,15 @@
+{
+  "name": "views",
+  "version": "1.0.0",
+  "description": "view metaphors",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "view",
+    "metaphor"
+  ],
+  "author": "Paul Zabin",
+  "license": "MIT"
+}

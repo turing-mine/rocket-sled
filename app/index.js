@@ -51,9 +51,9 @@ const serverIpAddr = ipADDR
 
 var xtemplate = require('../rdns/dendrites/url_receptor')
 
-var appRoot = './views/index.html'
-var cameraRoot = './views/camera.html'
-var uploadRoot = './views/upload.html'
+var appRoot = './templates/index.html'
+var cameraRoot = './templates/camera.html'
+var uploadRoot = './templates/upload.html'
 
 var appMeta = {"Content-Type": "text/html"}
 
