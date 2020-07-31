@@ -1,13 +1,13 @@
 {
-  "name": "uploads",
+  "name": "upload",
   "version": "1.0.0",
-  "description": "uploads directory ",
+  "description": "upload directory ",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "uploads",
+    "upload",
     "directory"
   ],
   "author": "Paul Zabin",

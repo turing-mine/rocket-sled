@@ -60,15 +60,11 @@ typings/
 # MacOS
 .DS_Store
 
-# Private App Exception
-!node_modules/dotenv/
-
 # Upload directories
-uploads/
+upload/
 
 # env files
 .env
-rdns/neurons/.env
 
 !.gitignore
 

@@ -49,7 +49,6 @@ do {
 
 const serverIpAddr = ipADDR
 
-//var xtemplate = require('../rdns/dendrites/url_receptor')
 var xtemplate = require('../views')
 
 var appRoot = './templates/index.html'
@@ -64,7 +63,7 @@ var resourceServer
     resourceApp.use('/css', express.static('./resources/css'))
     resourceApp.use('/js', express.static('./resources/js'))
     resourceApp.use('/assets', express.static('./assets'))
-    resourceApp.use('/uploads', express.static('./uploads'))
+    resourceApp.use('/uploads', express.static('./controllers/upload'))
     resourceApp.use('/upload', function(req, res, next){xtemplate.xUpload(req, res, uploadRoot, appMeta, serverIpAddr, portAvail)})
     resourceApp.use('/camera', function(req, res, next){xtemplate.xForm(req, res, cameraRoot, appMeta, serverIpAddr, portAvail)})
     resourceApp.use('/', function(req, res, next){xtemplate.xRoot(req, res, appRoot, appMeta, serverIpAddr, portAvail)})
