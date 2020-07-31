@@ -1,5 +1,5 @@
 
-const uploads = require('../uploads')
+const uploads = require('../../uploads')
 const find = require('find')
 
 const fsPromises = require('fs').promises
