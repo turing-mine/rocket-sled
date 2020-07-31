@@ -4,7 +4,7 @@
 const express = require('express')
 var resourceApp = express()
 
-require('dotenv').config()
+require('dotenv').config() //uses the environment parameters in the .env file
 
 const envPort = process.env.PORT
 const getPort = require('get-port')
