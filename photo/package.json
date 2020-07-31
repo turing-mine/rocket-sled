@@ -1,5 +1,5 @@
 {
-  "name": "photocopy",
+  "name": "photo",
   "version": "1.0.0",
   "description": "save an img file",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "keywords": [
     "photo",
-    "copy"
+    "save"
   ],
   "author": "Paul Zabin",
   "license": "MIT"

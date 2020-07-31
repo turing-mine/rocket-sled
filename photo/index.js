@@ -8,7 +8,7 @@ const { COPYFILE_EXCL } = require('fs').constants
 const clc = require("cli-color")
 const clrMsg = clc.bgXterm(56)
 
-exports.photosave = function(retrievalPath, saveName){
+exports.save = function(retrievalPath, saveName){
     var shortName = saveName
     saveName = uploads.dirName + saveName
     console.log(uploads.dirName)

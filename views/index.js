@@ -11,7 +11,7 @@ _.templateSettings = {
 
 const modID = module.id
 
-const photocopy = require('../photocopy')
+const photo = require('../photo')
 
 exports.xRoot = function(req, res, appRoot, appMeta, serverIpAddr, lPort){
     fs.readFile(appRoot, 'utf8', function(err, data){
@@ -83,7 +83,7 @@ exports.xUpload = function(req, res, buenoRoot, appMeta, serverIpAddr, lPort){
 
             if (files.upload["type"] == 'image/jpeg'){
                 imgType = files.upload.type
-                photocopy.photosave(retrievalPath, saveName)
+                photo.save(retrievalPath, saveName)
             }
             else{
                 imgType = "unknown"
