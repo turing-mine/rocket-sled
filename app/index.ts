@@ -64,7 +64,8 @@ var resourceServer
     resourceApp.use('/js', express.static('./resources/js'))
     resourceApp.use('/assets', express.static('./assets'))
     resourceApp.use('/uploads', express.static('./controllers/upload'))
-    resourceApp.use('/upload', function(req, res, next){xtemplate.xUpload(req, res, uploadRoot, appMeta, serverIpAddr, portAvail)})
+    resourceApp.get('/upload', function(req, res, next){xtemplate.xForm(req, res, cameraRoot, appMeta, serverIpAddr, portAvail)})
+    resourceApp.post('/upload', function(req, res, next){xtemplate.xUpload(req, res, uploadRoot, appMeta, serverIpAddr, portAvail)})
     resourceApp.use('/camera', function(req, res, next){xtemplate.xForm(req, res, cameraRoot, appMeta, serverIpAddr, portAvail)})
     resourceApp.use('/', function(req, res, next){xtemplate.xRoot(req, res, appRoot, appMeta, serverIpAddr, portAvail)})
     try {

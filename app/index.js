@@ -37,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var express = require('express');
 var resourceApp = express();
-require('dotenv').config();
+require('dotenv').config(); //uses the environment parameters in the .env file
 var envPort = process.env.PORT;
 var getPort = require('get-port');
 var portHarbor = function () { return ([envPort, 8080, 8081, 8082, 8083, 8084, 8085, 8086, 8087, 8088]); };
@@ -90,7 +90,8 @@ var resourceServer;
                 resourceApp.use('/js', express.static('./resources/js'));
                 resourceApp.use('/assets', express.static('./assets'));
                 resourceApp.use('/uploads', express.static('./controllers/upload'));
-                resourceApp.use('/upload', function (req, res, next) { xtemplate.xUpload(req, res, uploadRoot, appMeta, serverIpAddr, portAvail); });
+                resourceApp.get('/upload', function (req, res, next) { xtemplate.xForm(req, res, cameraRoot, appMeta, serverIpAddr, portAvail); });
+                resourceApp.post('/upload', function (req, res, next) { xtemplate.xUpload(req, res, uploadRoot, appMeta, serverIpAddr, portAvail); });
                 resourceApp.use('/camera', function (req, res, next) { xtemplate.xForm(req, res, cameraRoot, appMeta, serverIpAddr, portAvail); });
                 resourceApp.use('/', function (req, res, next) { xtemplate.xRoot(req, res, appRoot, appMeta, serverIpAddr, portAvail); });
                 _a.label = 1;
