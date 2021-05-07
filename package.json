@@ -38,7 +38,7 @@
         "formidable": "1.2.2",
         "get-port": "5.1.1",
         "numeral": "2.0.6",
-        "underscore": "1.10.2"
+        "underscore": "1.12.1"
     },
     "devDependencies": {
         "@types/node": "14.0.27",
